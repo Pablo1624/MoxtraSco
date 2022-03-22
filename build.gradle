@@ -1,0 +1,44 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.11-SNAPSHOT'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springdoc:springdoc-openapi-core:1.1.49'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
+	implementation 'org.projectlombok:lombok:1.18.22'
+	implementation 'org.projectlombok:lombok:1.18.22'
+	implementation 'org.testng:testng:7.5'
+	implementation 'junit:junit:4.13.2'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.4'
+	testImplementation 'uk.co.jemos.podam:podam:7.2.8.RELEASE'
+	testImplementation 'org.junit.vintage:junit-vintage-engine:5.8.2'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+test {
+	exclude 'com/example/moxtra/controller/**'
+}
