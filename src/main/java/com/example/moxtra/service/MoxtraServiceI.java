@@ -3,6 +3,7 @@ package com.example.moxtra.service;
 import com.example.moxtra.model.ListRelationShipResponseDTO;
 import com.example.moxtra.model.MoxtraAuthRequestDTO;
 import com.example.moxtra.model.MoxtraAuthResponseDTO;
+import com.example.moxtra.model.ScheduleRequestDTO;
 
 /**
  * The interface Moxtra service i.
@@ -24,4 +25,6 @@ public interface MoxtraServiceI {
      * @return the moxtra interviews
      */
     public ListRelationShipResponseDTO getMoxtraRelationShip(String token);
+
+    void schedule(String token, ScheduleRequestDTO request);
 }

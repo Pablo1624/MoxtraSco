@@ -39,8 +39,8 @@ public class SwaggerConfig {
 	@Bean
 	public OpenAPI apiInfo() {
 		return new OpenAPI()
-				.info(new Info().title("calculations")
-						.description("Application Java - Spring Boot. Reverse Mortgage Project - Calculations")
+				.info(new Info().title("Moxtra")
+						.description("Application Java - Spring Boot. Reverse Mortgage Project - Moxtra")
 						.version("1.0.0-SNAPSHOT"))
 				.components(new Components().addSecuritySchemes("BearerAuth",
 						new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")))

@@ -3,6 +3,7 @@ package com.example.moxtra.service.impl;
 import com.example.moxtra.model.ListRelationShipResponseDTO;
 import com.example.moxtra.model.MoxtraAuthRequestDTO;
 import com.example.moxtra.model.MoxtraAuthResponseDTO;
+import com.example.moxtra.model.ScheduleRequestDTO;
 import com.example.moxtra.service.MoxtraServiceI;
 import com.example.moxtra.service.RestTemplateI;
 import io.swagger.v3.core.util.Json;
@@ -53,6 +54,17 @@ public class MoxtraServiceImpl implements MoxtraServiceI {
         ListRelationShipResponseDTO response = restTemplateI.getMoxtraRelationShip(token);
         log.info("Response: ", Json.pretty(response));
         return response;
+    }
+
+    /**
+     * Schedule.
+     *
+     * @param token   the token
+     * @param request the request
+     */
+    public void schedule(String token, ScheduleRequestDTO request) {
+        restTemplateI.schedule(token, request);
+
     }
 
 }

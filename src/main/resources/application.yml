@@ -1,0 +1,38 @@
+server:
+  port: 8081
+hibernate:
+  show_sql: 'true'
+spring:
+  jpa:
+    generate-ddl: 'true'
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: ''
+    username: root
+    url: jdbc:mysql://localhost:3306/wallfin_2020
+jwt:
+  header: Authorization
+  route:
+    authentication:
+      nodeValue: ''
+      path: auth
+      refresh: refresh
+  expiration: '900'
+  secret: tasksSecret
+eclipselink:
+  logging:
+    level:
+      sql: FINE
+    parameters: 'true'
+org:
+  hibernate:
+    SQL: DEBUG
+openjpa:
+  Log: SQL=Trace
+rest-template:
+  moxtra:
+    base-url: https://scotia.moxtra.com/v1
+    paths:
+      auth: /core/oauth/token
+      relationship: /me/relationship

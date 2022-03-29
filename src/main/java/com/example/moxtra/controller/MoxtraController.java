@@ -3,6 +3,7 @@ package com.example.moxtra.controller;
 import com.example.moxtra.model.ListRelationShipResponseDTO;
 import com.example.moxtra.model.MoxtraAuthRequestDTO;
 import com.example.moxtra.model.MoxtraAuthResponseDTO;
+import com.example.moxtra.model.ScheduleRequestDTO;
 import com.example.moxtra.service.MoxtraServiceI;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +49,11 @@ public class MoxtraController {
     @GetMapping(value = "/me/relationship", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ListRelationShipResponseDTO getMoxtraAny(@RequestHeader(value = "Authorization") String token) {
         return moxtraService.getMoxtraRelationShip(token);
+    }
+
+    @PostMapping(value = "/meet/schedule", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void schedule(@RequestHeader(value = "Authorization") String token, @RequestBody ScheduleRequestDTO request) {
+        moxtraService.schedule(token, request);
     }
 
 }
