@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
 hibernate:
   show_sql: 'true'
 spring:
@@ -10,7 +10,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     password: ''
     username: root
-    url: jdbc:mysql://localhost:3306/wallfin_2020
+    url: jdbc:mysql://localhost:3306/moxtradb
 jwt:
   header: Authorization
   route:

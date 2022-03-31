@@ -1,104 +1,105 @@
-package com.example.moxtra.model;
+package com.example.moxtra.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.example.moxtra.model.ChannelDTO;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 /**
- * The type Relation ship dto.
+ * The type Relation ship entity.
  */
 @Getter
 @Setter
 @NoArgsConstructor
-public class RelationShipDTO {
+@Entity
+@Table(name = "relation_ship")
+public class RelationShipEntity {
 
     /**
      * The Unique id.
      */
-    @JsonProperty(value = "unique_id")
-    @NotNull
+    @Id
+    @Column(name = "unique_id", nullable = false)
     private Long uniqueId;
 
     /**
      * The First name.
      */
-    @JsonProperty(value = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     /**
      * The Last name.
      */
-    @JsonProperty(value = "last_name")
+    @Column(name = "last_name")
     private String lastName;
 
     /**
      * The Email.
      */
-    @JsonProperty(value = "email")
+    @Column(name = "email")
     private String email;
 
     /**
      * The Phone number.
      */
-    @JsonProperty(value = "phone_number")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     /**
      * The User id.
      */
-    @JsonProperty(value = "user_id")
+    @Column(name = "user_id")
     private String userId;
 
     /**
      * The Name.
      */
-    @JsonProperty(value = "name")
+    @Column(name = "name")
     private String name;
 
     /**
      * The Is disabled.
      */
-    @JsonProperty(value = "is_disabled")
+    @Column(name = "is_disabled")
     private Boolean isDisabled;
 
     /**
      * The Timezone.
      */
-    @JsonProperty(value = "timezone")
+    @Column(name = "timezone")
     private String timezone;
 
     /**
      * The Title.
      */
-    @JsonProperty(value = "title")
+    @Column(name = "title")
     private String title;
 
     /**
      * The Binder id.
      */
-    @JsonProperty(value = "binder_id")
+    @Column(name = "binder_id")
     private String binderId;
 
     /**
      * The Status.
      */
-    @JsonProperty(value = "status")
+    @Column(name = "status")
     private String status;
 
     /**
      * The Relation id.
      */
-    @JsonProperty(value = "relation_id")
+    @Column(name = "relation_id")
     private Integer relationId;
 
-    /**
-     * The Channels.
-     */
-    @JsonProperty(value = "channels")
-    private List<ChannelDTO> channels;
 
 }

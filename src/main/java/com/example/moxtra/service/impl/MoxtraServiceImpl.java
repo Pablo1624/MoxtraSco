@@ -1,14 +1,19 @@
 package com.example.moxtra.service.impl;
 
+import com.example.moxtra.entities.RelationShipEntity;
+import com.example.moxtra.mapper.MapperI;
 import com.example.moxtra.model.ListRelationShipResponseDTO;
 import com.example.moxtra.model.MoxtraAuthRequestDTO;
 import com.example.moxtra.model.MoxtraAuthResponseDTO;
 import com.example.moxtra.model.ScheduleRequestDTO;
+import com.example.moxtra.repositories.RelationShipRespository;
 import com.example.moxtra.service.MoxtraServiceI;
 import com.example.moxtra.service.RestTemplateI;
 import io.swagger.v3.core.util.Json;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * The type Moxtra service.
@@ -23,12 +28,25 @@ public class MoxtraServiceImpl implements MoxtraServiceI {
     private RestTemplateI restTemplateI;
 
     /**
+     * The Mapper.
+     */
+    private MapperI mapper;
+    /**
+     * The Relation ship respository.
+     */
+    private RelationShipRespository relationShipRespository;
+
+    /**
      * Instantiates a new Moxtra service.
      *
-     * @param restTemplateI the rest template i
+     * @param restTemplateI           the rest template i
+     * @param mapper                  the mapper
+     * @param relationShipRespository the relation ship respository
      */
-    public MoxtraServiceImpl(RestTemplateI restTemplateI){
+    public MoxtraServiceImpl(RestTemplateI restTemplateI, MapperI mapper, RelationShipRespository relationShipRespository){
         this.restTemplateI = restTemplateI;
+        this.mapper = mapper;
+        this.relationShipRespository = relationShipRespository;
     }
 
     /**
@@ -53,6 +71,8 @@ public class MoxtraServiceImpl implements MoxtraServiceI {
     public ListRelationShipResponseDTO getMoxtraRelationShip(String token) {
         ListRelationShipResponseDTO response = restTemplateI.getMoxtraRelationShip(token);
         log.info("Response: ", Json.pretty(response));
+        List<RelationShipEntity> listRelationShipEntity = mapper.relationShipDTOListToRelationShipEntityList(response.getData());
+        relationShipRespository.saveAll(listRelationShipEntity);
         return response;
     }
 
